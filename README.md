@@ -4,16 +4,23 @@ Skill de Claude Code + cliente Python (solo stdlib) para consultar y escribir en
 
 ## Instalar
 
-Desde un repositorio git (publica esta carpeta):
+Desde GitHub (dentro de Claude Code):
 ```
-/plugin marketplace add <usuario>/<repo>
+/plugin marketplace add AugeTec/odoo-jsonrpc-plugin
 /plugin install odoo-jsonrpc@odoo-tools
 ```
-Desde una ruta local:
+También con la URL completa: `/plugin marketplace add git@github.com:AugeTec/odoo-jsonrpc-plugin.git` (SSH) o `https://github.com/AugeTec/odoo-jsonrpc-plugin.git` (HTTPS).
+
+Desde una copia local:
 ```
-/plugin marketplace add /ruta/a/odoo-jsonrpc-plugin
+git clone git@github.com:AugeTec/odoo-jsonrpc-plugin.git
+/plugin marketplace add ./odoo-jsonrpc-plugin
 /plugin install odoo-jsonrpc@odoo-tools
 ```
+
+Actualizar: `/plugin marketplace update odoo-tools`.
+
+Skills incluidas: `odoo-jsonrpc` (conexión y consultas) y `odoo-workflow-design` (diseño y prueba de flujos de trabajo).
 
 ## Credenciales
 
