@@ -1,0 +1,11 @@
+{
+  "name": "odoo-tools",
+  "owner": { "name": "Auge Tec" },
+  "plugins": [
+    {
+      "name": "odoo-jsonrpc",
+      "source": "./plugins/odoo-jsonrpc",
+      "description": "Lee y escribe datos en cualquier base Odoo vía JSON-RPC (cliente stdlib sin dependencias)."
+    }
+  ]
+}

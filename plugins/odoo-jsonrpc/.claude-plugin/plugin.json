@@ -1,0 +1,7 @@
+{
+  "name": "odoo-jsonrpc",
+  "version": "1.0.0",
+  "description": "Skill + cliente Python sin dependencias para consultar y escribir en cualquier base de datos Odoo vía JSON-RPC.",
+  "author": { "name": "Auge Tec" },
+  "keywords": ["odoo", "jsonrpc", "erp"]
+}
