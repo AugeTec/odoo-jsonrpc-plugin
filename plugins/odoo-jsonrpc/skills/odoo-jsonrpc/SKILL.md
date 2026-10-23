@@ -5,13 +5,13 @@ description: Usar para leer o escribir datos en cualquier base de datos Odoo ví
 
 # Comunicarse con una base Odoo (JSON-RPC)
 
-El plugin incluye un cliente sin dependencias en `scripts/odoo.py` (junto a este SKILL.md; usa la ruta del directorio base de la skill).
+El plugin incluye un cliente sin dependencias en `${CLAUDE_PLUGIN_ROOT}/scripts/odoo.py`, compartido por todas las skills del plugin.
 
 ## 0. Credenciales — nunca asumidas
 
 Pedir al usuario, por cada base nueva: **URL** (`https://<host>` o `.../jsonrpc`), **db**, **usuario** y **password o API key**.
 
-- **Guardar de forma segura (recomendado)**: `python3 <skill_dir>/scripts/odoo.py --save [perfil]` (toma `ODOO_*` del entorno o pregunta; el password se pide con prompt oculto). Se guarda en el llavero del SO (Linux `secret-tool`/libsecret, macOS `security`); sin llavero cae a `~/.config/odoo-jsonrpc/profiles.json` con permisos 0600 y avisa. Después `connect()` y el CLI lo usan solos (`ODOO_PROFILE=<perfil>` para elegir; si solo hay uno o existe `default`, se usa ese). `--profiles` lista (sin passwords) y `--forget <perfil>` borra.
+- **Guardar de forma segura (recomendado)**: `python3 ${CLAUDE_PLUGIN_ROOT}/scripts/odoo.py --save [perfil]` (toma `ODOO_*` del entorno o pregunta; el password se pide con prompt oculto). Se guarda en el llavero del SO (Linux `secret-tool`/libsecret, macOS `security`); sin llavero cae a `~/.config/odoo-jsonrpc/profiles.json` con permisos 0600 y avisa. Después `connect()` y el CLI lo usan solos (`ODOO_PROFILE=<perfil>` para elegir; si solo hay uno o existe `default`, se usa ese). `--profiles` lista (sin passwords) y `--forget <perfil>` borra.
 - Alternativas sin guardar: variables de entorno (`ODOO_URL`, `ODOO_DB`, `ODOO_USER`, `ODOO_PASSWORD`) o un `odoo_config.json` en el directorio de trabajo:
   ```json
   {"url": "https://<host>/jsonrpc", "db": "<db>", "username": "<login>", "password": "<password_o_api_key>"}
@@ -22,7 +22,7 @@ Pedir al usuario, por cada base nueva: **URL** (`https://<host>` o `.../jsonrpc`
 ## 1. Probar la conexión primero
 
 ```bash
-python3 <skill_dir>/scripts/odoo.py res.users search_read '[[["login","=","<login>"]]]' '{"fields":["id","name","login"]}'
+python3 ${CLAUDE_PLUGIN_ROOT}/scripts/odoo.py res.users search_read '[[["login","=","<login>"]]]' '{"fields":["id","name","login"]}'
 ```
 Si falla por red, verificar que el egress del entorno alcance el host.
 
@@ -40,7 +40,7 @@ Si falla por red, verificar que el egress del entorno alcance el host.
 
 ## 3. Investigaciones de varios pasos: script, no CLI encadenado
 
-Escribir un script que haga `sys.path.insert(0, "<skill_dir>/scripts")`, `from odoo import connect` y cruce todo en memoria:
+Escribir un script que haga `sys.path.insert(0, "${CLAUDE_PLUGIN_ROOT}/scripts")`, `from odoo import connect` y cruce todo en memoria:
 
 ```python
 c = connect()

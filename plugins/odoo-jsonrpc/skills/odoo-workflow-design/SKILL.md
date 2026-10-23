@@ -7,7 +7,7 @@ description: Usar para diseñar y lograr un flujo de trabajo de punta a punta en
 
 Parte de una **meta de negocio**, no de un modelo. El agente no se limita a describir lo que existe: **propone un diseño, lo prueba en la instancia, observa qué falla y lo ajusta** hasta que la meta se logra o queda demostrado por qué no es posible sin personalizar.
 
-Herramienta única: `odoo.py`/`connect()` de `odoo-jsonrpc` (lectura con `search_read`, `fields_get`, `get_views`, `read_group`; pruebas con `create`, `write`, `action_confirm`, `button_validate`…). No hay script propio. No asumir el flujo "estándar": la instancia puede tener módulos, Studio o automatizaciones que lo cambian.
+Herramienta única: `${CLAUDE_PLUGIN_ROOT}/scripts/odoo.py` o `connect()` (ver skill `odoo-jsonrpc`) (lectura con `search_read`, `fields_get`, `get_views`, `read_group`; pruebas con `create`, `write`, `action_confirm`, `button_validate`…). No hay script propio. No asumir el flujo "estándar": la instancia puede tener módulos, Studio o automatizaciones que lo cambian.
 
 ## 0. Acordar antes de empezar (preguntar solo lo que falte)
 
