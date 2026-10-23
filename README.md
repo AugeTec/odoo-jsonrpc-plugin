@@ -24,3 +24,7 @@ Guárdalas una vez en el llavero del SO: `python3 plugins/odoo-jsonrpc/scripts/o
 ```
 python3 plugins/odoo-jsonrpc/scripts/odoo.py res.partner search_read '[[]]' '{"fields":["name"],"limit":5}'
 ```
+
+## Licencia
+
+Apache License 2.0 — ver [LICENSE](LICENSE).
