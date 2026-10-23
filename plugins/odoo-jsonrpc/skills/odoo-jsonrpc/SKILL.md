@@ -7,7 +7,7 @@ description: Usar para leer o escribir datos en cualquier base de datos Odoo ví
 
 El plugin incluye un cliente sin dependencias en `scripts/odoo.py` (junto a este SKILL.md; usa la ruta del directorio base de la skill).
 
-## 0. Credenciales — nunca asumidas, nunca persistidas
+## 0. Credenciales — nunca asumidas
 
 Pedir al usuario, por cada base nueva: **URL** (`https://<host>` o `.../jsonrpc`), **db**, **usuario** y **password o API key**.
 
@@ -15,8 +15,7 @@ Pedir al usuario, por cada base nueva: **URL** (`https://<host>` o `.../jsonrpc`
   ```json
   {"url": "https://<host>/jsonrpc", "db": "<db>", "username": "<login>", "password": "<password_o_api_key>"}
   ```
-- Nunca guardarlas en memoria persistente, docs del proyecto ni en el repositorio (el `.gitignore` del plugin ya excluye `odoo_config.json`). Es normal volver a pedirlas en cada sesión.
-- Sí se puede documentar lo no sensible: URL, nombre de db, IDs de modelos/tipos ya identificados.
+- No incluirlas en el repositorio (el `.gitignore` del plugin ya excluye `odoo_config.json`). Sí se puede documentar lo no sensible: URL, nombre de db, IDs de modelos/tipos ya identificados.
 
 ## 1. Probar la conexión primero
 
