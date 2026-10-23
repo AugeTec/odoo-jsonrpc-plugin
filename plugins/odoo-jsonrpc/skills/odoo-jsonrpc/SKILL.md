@@ -11,11 +11,13 @@ El plugin incluye un cliente sin dependencias en `scripts/odoo.py` (junto a este
 
 Pedir al usuario, por cada base nueva: **URL** (`https://<host>` o `.../jsonrpc`), **db**, **usuario** y **password o API key**.
 
-- Pasarlas por variables de entorno (`ODOO_URL`, `ODOO_DB`, `ODOO_USER`, `ODOO_PASSWORD`) o por un `odoo_config.json` en el directorio de trabajo:
+- **Guardar de forma segura (recomendado)**: `python3 <skill_dir>/scripts/odoo.py --save [perfil]` (toma `ODOO_*` del entorno o pregunta; el password se pide con prompt oculto). Se guarda en el llavero del SO (Linux `secret-tool`/libsecret, macOS `security`); sin llavero cae a `~/.config/odoo-jsonrpc/profiles.json` con permisos 0600 y avisa. Después `connect()` y el CLI lo usan solos (`ODOO_PROFILE=<perfil>` para elegir; si solo hay uno o existe `default`, se usa ese). `--profiles` lista (sin passwords) y `--forget <perfil>` borra.
+- Alternativas sin guardar: variables de entorno (`ODOO_URL`, `ODOO_DB`, `ODOO_USER`, `ODOO_PASSWORD`) o un `odoo_config.json` en el directorio de trabajo:
   ```json
   {"url": "https://<host>/jsonrpc", "db": "<db>", "username": "<login>", "password": "<password_o_api_key>"}
   ```
-- No incluirlas en el repositorio (el `.gitignore` del plugin ya excluye `odoo_config.json`). Sí se puede documentar lo no sensible: URL, nombre de db, IDs de modelos/tipos ya identificados.
+- Prioridad: entorno > `ODOO_CONFIG`/`odoo_config.json` > perfil guardado.
+- Si el usuario te da credenciales en el chat, ofrece guardarlas con `--save` (pasándolas por entorno, nunca como argumento en la línea de comandos). No escribirlas en archivos del repositorio ni de proyecto (el `.gitignore` ya excluye `odoo_config.json`). Sí se puede documentar lo no sensible: URL, nombre de db, IDs de modelos/tipos ya identificados.
 
 ## 1. Probar la conexión primero
 
